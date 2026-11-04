@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#173b67" />
+  <meta name="description" content="Aplikasi pencatatan tabungan siswa kelas VIII SMPN 1 Pugaan Tahun Pelajaran 2026/2027." />
+  <title>Tabungan Kelas VIII | SMPN 1 Pugaan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root{--navy:#173b67;--navy2:#204d80;--blue:#2d70bd;--sky:#eaf3ff;--ink:#172b43;--muted:#708198;--line:#e7edf4;--bg:#f4f7fb;--white:#fff;--green:#16865c;--green-bg:#e7f7ef;--red:#c34b4b;--red-bg:#fff0ef;--amber:#b7791f;--shadow:0 12px 34px rgba(22,53,88,.08);--radius:19px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.app-shell{min-height:100vh;padding-bottom:30px}.topbar{background:linear-gradient(115deg,var(--navy),#24588b);color:#fff;padding:19px 20px 27px;position:relative;overflow:hidden}.topbar:after{content:'';position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.11);border-radius:50%;right:-75px;top:-112px;box-shadow:0 0 0 25px rgba(255,255,255,.035),0 0 0 52px rgba(255,255,255,.025)}.top-inner{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:1}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.16);display:grid;place-items:center;font-size:20px;border:1px solid rgba(255,255,255,.18)}.brand h1{font:800 16px 'Plus Jakarta Sans',sans-serif;margin:0;letter-spacing:.1px}.brand p{font-size:11px;margin:4px 0 0;color:rgba(255,255,255,.76)}.top-actions{display:flex;align-items:center;gap:8px}.icon-btn{width:39px;height:39px;border:1px solid rgba(255,255,255,.2);border-radius:12px;background:rgba(255,255,255,.12);color:#fff}.top-tag{font-size:11px;padding:8px 11px;border-radius:99px;background:rgba(255,255,255,.13);white-space:nowrap}
+    .container{width:min(1120px,calc(100% - 32px));margin:0 auto}.welcome{margin-top:-12px;position:relative;z-index:2;background:#fff;border:1px solid rgba(231,237,244,.9);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:15px}.welcome h2{margin:0;font:800 18px 'Plus Jakarta Sans',sans-serif}.welcome p{margin:5px 0 0;color:var(--muted);font-size:12px}.welcome-ornament{width:54px;height:54px;flex:0 0 auto;background:var(--sky);border-radius:16px;display:grid;place-items:center;color:var(--blue);font-size:23px}
+    .nav{display:flex;gap:8px;margin:17px 0 19px;padding:5px;background:#e9eff6;border-radius:15px;overflow:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav-btn{border:0;background:transparent;color:#64758b;font-weight:700;font-size:12px;padding:11px 15px;border-radius:11px;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:8px;flex:1}.nav-btn.active{background:#fff;color:var(--navy);box-shadow:0 3px 10px rgba(28,57,88,.08)}.page{animation:fade .18s ease}@keyframes fade{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:5px 0 13px}.section-title h2{margin:0;font:800 16px 'Plus Jakarta Sans',sans-serif}.section-title p{margin:4px 0 0;color:var(--muted);font-size:11px}.small-muted{font-size:11px;color:var(--muted)}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:21px}.stat-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 5px 18px rgba(22,53,88,.035);min-width:0}.stat-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.stat-label{font-size:11px;color:var(--muted);font-weight:700}.stat-icon{width:33px;height:33px;border-radius:11px;background:var(--sky);color:var(--blue);display:grid;place-items:center}.stat-card strong{display:block;font:800 clamp(16px,2vw,21px) 'Plus Jakarta Sans',sans-serif;margin-top:12px;overflow-wrap:anywhere}.stat-card .stat-foot{font-size:10px;color:var(--muted);margin-top:5px}.stat-card.primary{background:linear-gradient(135deg,#1b4778,#286aa7);color:#fff;border:0}.stat-card.primary .stat-label,.stat-card.primary .stat-foot{color:rgba(255,255,255,.75)}.stat-card.primary .stat-icon{background:rgba(255,255,255,.16);color:#fff}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 5px 18px rgba(22,53,88,.035);min-width:0}.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.student-list{display:grid;gap:9px}.student-row{display:flex;align-items:center;gap:11px;padding:11px 12px;border:1px solid #edf1f6;border-radius:14px;min-width:0}.avatar{width:37px;height:37px;flex:0 0 auto;border-radius:12px;background:#edf4fc;color:var(--navy2);display:grid;place-items:center;font:800 12px 'Plus Jakarta Sans',sans-serif}.student-info{min-width:0;flex:1}.student-info b{font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.student-info span{font-size:10px;color:var(--muted);display:block;margin-top:3px}.student-balance{text-align:right;white-space:nowrap}.student-balance b{font-size:12px;display:block}.student-balance span{font-size:9px;color:var(--muted)}.amount-positive{color:var(--green)!important}.amount-negative{color:var(--red)!important}.empty-state{padding:26px 14px;text-align:center;color:var(--muted);font-size:12px}.empty-state i{display:block;font-size:25px;color:#a7b5c6;margin-bottom:8px}.recent-list{display:grid;gap:0}.recent-item{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #edf1f6}.recent-item:last-child{border-bottom:0}.tx-icon{width:36px;height:36px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center}.tx-icon.in{background:var(--green-bg);color:var(--green)}.tx-icon.out{background:var(--red-bg);color:var(--red)}.tx-info{flex:1;min-width:0}.tx-info b{font-size:11px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tx-info span{font-size:10px;color:var(--muted);display:block;margin-top:3px}.tx-amount{text-align:right;font-size:11px;font-weight:800;white-space:nowrap}
+    .form-panel{max-width:720px;margin:0 auto}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:13px}.field label{font-size:11px;font-weight:800;color:#41566f}.field input,.field select,.field textarea,.filter-control{width:100%;border:1px solid #dfe7f0;border-radius:12px;background:#fbfdff;padding:12px 13px;color:var(--ink);outline:none;min-height:45px;font-size:13px}.field textarea{resize:vertical;min-height:78px}.field input:focus,.field select:focus,.field textarea:focus,.filter-control:focus{border-color:#75a9df;box-shadow:0 0 0 3px rgba(45,112,189,.1)}.type-switch{display:grid;grid-template-columns:1fr 1fr;gap:8px}.type-btn{border:1px solid #dfe7f0;border-radius:12px;background:#fff;padding:12px;font-size:12px;font-weight:800;color:#65768a}.type-btn.active.in{background:var(--green-bg);border-color:#a6dfc2;color:var(--green)}.type-btn.active.out{background:var(--red-bg);border-color:#f0b9b5;color:var(--red)}.form-actions{display:flex;gap:9px;margin-top:5px}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn-primary{background:var(--navy);color:#fff;flex:1}.btn-primary:disabled{opacity:.55;cursor:wait}.btn-light{background:#eef3f8;color:#52657d}.form-message{font-size:11px;margin:0 0 12px;padding:10px 12px;border-radius:10px;display:none}.form-message.error{display:block;color:#a53c3c;background:#fff0ef}.form-message.success{display:block;color:#14734e;background:#e7f7ef}
+    .filters{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:9px;margin-bottom:13px}.filter-control{min-height:42px;padding:10px 12px;font-size:12px}.history-list{display:grid;gap:9px}.history-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;display:flex;align-items:center;gap:12px}.history-main{min-width:0;flex:1}.history-main b{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.history-main span{display:block;color:var(--muted);font-size:10px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.history-side{text-align:right;white-space:nowrap}.history-side b{font-size:12px;display:block}.history-side small{font-size:9px;color:var(--muted);display:block;margin-top:4px}.edit-btn{width:32px;height:32px;border:1px solid #e0e8f1;background:#f8fbff;border-radius:10px;color:var(--navy2);margin-left:4px}.pill{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:800;border-radius:99px;padding:4px 7px;margin-top:5px}.pill.in{background:var(--green-bg);color:var(--green)}.pill.out{background:var(--red-bg);color:var(--red)}
+    .login-wrap{min-height:calc(100vh - 90px);display:grid;place-items:center;padding:25px 16px}.login-card{background:#fff;border:1px solid var(--line);border-radius:23px;box-shadow:var(--shadow);width:min(420px,100%);padding:27px}.login-logo{width:58px;height:58px;border-radius:18px;background:var(--sky);color:var(--blue);display:grid;place-items:center;font-size:25px;margin-bottom:17px}.login-card h2{font:800 20px 'Plus Jakarta Sans',sans-serif;margin:0}.login-card p{font-size:12px;color:var(--muted);line-height:1.6;margin:8px 0 20px}.login-card .field{margin-bottom:14px}.login-card input{text-align:center;letter-spacing:7px;font-size:20px;font-weight:800}.login-note{font-size:10px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5}.loader{width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.footer{text-align:center;color:#9aa8b8;font-size:10px;padding:25px 8px 8px}
+    @media(max-width:760px){.container{width:min(100% - 24px,600px)}.topbar{padding:16px 14px 24px}.brand h1{font-size:14px}.brand p{font-size:10px}.top-tag{font-size:9px;padding:7px 8px}.welcome{padding:15px 16px}.welcome h2{font-size:16px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.stat-card{padding:13px}.stat-card strong{font-size:17px}.two-col{grid-template-columns:1fr}.nav{margin:13px 0 15px}.nav-btn{padding:11px 12px;flex:0 0 auto}.panel{padding:15px}.filters{grid-template-columns:1fr 1fr}.filters .search-filter{grid-column:1/-1}.form-grid{grid-template-columns:1fr;gap:0}.history-card{gap:8px;padding:11px}.history-side b{font-size:11px}.student-info b{font-size:11px}}
+    @media(max-width:390px){.top-tag{display:none}.welcome p{max-width:245px}.stats-grid{gap:7px}.stat-card{padding:11px}.stat-card strong{font-size:15px}.nav-btn{font-size:11px;padding:10px}.history-main b{max-width:155px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="top-inner">
+      <div class="brand">
+        <div class="brand-mark"><i class="fa-solid fa-money-bill-wave"></i></div>
+        <div><h1>TABUNGAN KELAS VIII</h1><p>SMPN 1 PUGAAN · TP 2026/2027</p></div>
+      </div>
+      <div class="top-actions">
+        <span class="top-tag"><i class="fa-solid fa-money-bill-wave"></i> Pencatatan Tabungan</span>
+        <button id="refreshBtn" class="icon-btn hidden" title="Muat ulang data" aria-label="Muat ulang data"><i class="fa-solid fa-rotate"></i></button>
+        <button id="logoutBtn" class="icon-btn hidden" title="Keluar" aria-label="Keluar"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <section id="loginScreen" class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo"><i class="fa-solid fa-lock"></i></div>
+      <h2>Masuk ke Aplikasi</h2>
+      <p>Masukkan PIN pengelola untuk membuka data tabungan siswa kelas VIII SMPN 1 Pugaan.</p>
+      <form id="loginForm">
+        <div class="field"><label for="pinInput">PIN APLIKASI</label><input id="pinInput" type="password" inputmode="numeric" maxlength="12" placeholder="••••••" autocomplete="current-password" required /></div>
+        <p id="loginError" class="form-message error"></p>
+        <button id="loginBtn" class="btn btn-primary" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk</button>
+      </form>
+      <div class="login-note">Data transaksi disimpan ke Google Sheets yang terhubung dengan aplikasi ini.</div>
+    </div>
+  </section>
+
+  <div id="appScreen" class="app-shell hidden">
+    <div class="container">
+      <section class="welcome">
+        <div><h2>Ringkasan Tabungan Siswa</h2><p>Kelola uang masuk, uang keluar, dan saldo tabungan dalam satu aplikasi.</p></div>
+        <div class="welcome-ornament"><i class="fa-solid fa-chart-line"></i></div>
+      </section>
+
+      <nav class="nav" aria-label="Navigasi aplikasi">
+        <button class="nav-btn active" data-page="dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</button>
+        <button class="nav-btn" data-page="input"><i class="fa-solid fa-circle-plus"></i> Input</button>
+        <button class="nav-btn" data-page="history"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</button>
+        <button class="nav-btn" data-page="students"><i class="fa-solid fa-users"></i> Siswa</button>
+      </nav>
+
+      <main>
+        <section id="page-dashboard" class="page">
+          <div class="section-title"><div><h2>Dashboard Keuangan</h2><p>Ringkasan seluruh tabungan kelas VIII.</p></div><span id="lastUpdated" class="small-muted">Memuat data…</span></div>
+          <div class="stats-grid">
+            <article class="stat-card primary"><div class="stat-top"><span class="stat-label">TOTAL SALDO TABUNGAN</span><span class="stat-icon"><i class="fa-solid fa-wallet"></i></span></div><strong id="totalBalance">Rp 0</strong><div class="stat-foot">Akumulasi saldo seluruh siswa</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">UANG MASUK</span><span class="stat-icon" style="background:var(--green-bg);color:var(--green)"><i class="fa-solid fa-arrow-down"></i></span></div><strong id="totalIn">Rp 0</strong><div class="stat-foot">Total seluruh setoran</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">UANG KELUAR</span><span class="stat-icon" style="background:var(--red-bg);color:var(--red)"><i class="fa-solid fa-arrow-up"></i></span></div><strong id="totalOut">Rp 0</strong><div class="stat-foot">Total seluruh penarikan</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">JUMLAH SISWA</span><span class="stat-icon"><i class="fa-solid fa-user-group"></i></span></div><strong id="totalStudents">0</strong><div class="stat-foot">Siswa terdaftar</div></article>
+          </div>
+          <div class="two-col">
+            <section class="panel"><div class="section-title"><div><h2>Saldo Per Siswa</h2><p>Saldo terkini masing-masing siswa.</p></div><span class="small-muted" id="studentCountLabel">0 siswa</span></div><div id="dashboardStudents" class="student-list"></div></section>
+            <section class="panel"><div class="section-title"><div><h2>Transaksi Terbaru</h2><p>Lima transaksi terakhir.</p></div><button class="btn btn-light" data-goto="history" type="button">Lihat semua <i class="fa-solid fa-arrow-right"></i></button></div><div id="recentTransactions" class="recent-list"></div></section>
+          </div>
+        </section>
+
+        <section id="page-input" class="page hidden">
+          <div class="section-title"><div><h2 id="formTitle">Input Transaksi</h2><p>Catat setoran atau penarikan tabungan siswa.</p></div></div>
+          <section class="panel form-panel">
+            <form id="transactionForm">
+              <p id="formMessage" class="form-message"></p>
+              <div class="field"><label>JENIS TRANSAKSI</label><div class="type-switch"><button type="button" class="type-btn active in" data-type="MASUK"><i class="fa-solid fa-circle-arrow-down"></i> Uang Masuk</button><button type="button" class="type-btn" data-type="KELUAR"><i class="fa-solid fa-circle-arrow-up"></i> Uang Keluar</button></div></div>
+              <div class="form-grid">
+                <div class="field"><label for="studentInput">NAMA SISWA</label><select id="studentInput" required><option value="">Memuat daftar siswa…</option></select></div>
+                <div class="field"><label for="dateInput">TANGGAL TRANSAKSI</label><input id="dateInput" type="date" required /></div>
+              </div>
+              <div class="field"><label for="amountInput">JUMLAH UANG (RUPIAH)</label><input id="amountInput" type="number" min="1" step="1" inputmode="numeric" placeholder="Contoh: 10000" required /></div>
+              <div class="field"><label for="noteInput">KETERANGAN <span class="small-muted">(opsional, maks. 160 karakter)</span></label><textarea id="noteInput" maxlength="160" placeholder="Contoh: Setoran tabungan mingguan"></textarea></div>
+              <div class="form-actions"><button id="cancelEditBtn" class="btn btn-light hidden" type="button">Batal Edit</button><button id="saveTransactionBtn" class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Simpan Transaksi</button></div>
+            </form>
+          </section>
+        </section>
+
+        <section id="page-history" class="page hidden">
+          <div class="section-title"><div><h2>Riwayat Transaksi</h2><p>Seluruh catatan uang masuk dan uang keluar.</p></div><span id="historyCount" class="small-muted">0 transaksi</span></div>
+          <section class="panel">
+            <div class="filters">
+              <input id="searchHistory" class="filter-control search-filter" type="search" placeholder="Cari nama siswa / keterangan…" />
+              <select id="filterStudent" class="filter-control"><option value="">Semua siswa</option></select>
+              <select id="filterType" class="filter-control"><option value="">Semua transaksi</option><option value="MASUK">Uang masuk</option><option value="KELUAR">Uang keluar</option></select>
+            </div>
+            <div id="historyList" class="history-list"></div>
+          </section>
+        </section>
+
+        <section id="page-students" class="page hidden">
+          <div class="section-title"><div><h2>Data Tabungan Siswa</h2><p>Rincian jumlah setoran, penarikan, dan saldo tiap siswa.</p></div><span id="studentsPageCount" class="small-muted">0 siswa</span></div>
+          <div id="allStudents" class="student-list"></div>
+        </section>
+      </main>
+      <div class="footer">Aplikasi Tabungan Kelas VIII · SMPN 1 Pugaan · Tahun Pelajaran 2026/2027</div>
+    </div>
+  </div>
+
+  <script>
+    // GANTI dengan URL Web App Google Apps Script yang berakhiran /exec.
+    const API_URL = 'https://script.google.com/macros/s/AKfycbzo9_4oxdK_lAJJb5YIHIRUX8QjdQH7kh8iOb4izde-OVj_ISKPh3312HQkKE867A5l/exec';
+    const state = { token: '', students: [], transactions: [], page: 'dashboard', type: 'MASUK', editId: null };
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+
+    function rupiah(value) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Number(value) || 0);
+    }
+    function escapeHTML(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[ch]);
+    }
+    function localDateString(date = new Date()) {
+      const y = date.getFullYear(); const m = String(date.getMonth() + 1).padStart(2, '0'); const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+    function formatDate(value) {
+      if (!value) return '-';
+      const parts = String(value).split('-');
+      if (parts.length !== 3) return escapeHTML(value);
+      const date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+      return date.toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
+    }
+    function initials(name) {
+      return String(name || '').trim().split(/\s+/).slice(0,2).map(part => part[0] || '').join('').toUpperCase();
+    }
+    function calculateSummary() {
+      const balances = {};
+      const totals = {};
+      state.students.forEach(student => { balances[student.id] = 0; totals[student.id] = { masuk: 0, keluar: 0 }; });
+      let totalIn = 0; let totalOut = 0;
+      state.transactions.forEach(tx => {
+        const amount = Number(tx.amount) || 0;
+        if (tx.type === 'MASUK') { totalIn += amount; balances[tx.studentId] = (balances[tx.studentId] || 0) + amount; if (totals[tx.studentId]) totals[tx.studentId].masuk += amount; }
+        if (tx.type === 'KELUAR') { totalOut += amount; balances[tx.studentId] = (balances[tx.studentId] || 0) - amount; if (totals[tx.studentId]) totals[tx.studentId].keluar += amount; }
+      });
+      return { balances, totals, totalIn, totalOut, totalBalance: totalIn - totalOut };
+    }
+
+    function apiRequest(action, data = {}, includeToken = true) {
+      return new Promise((resolve, reject) => {
+        if (!API_URL || API_URL.includes('GANTI_DENGAN_URL')) { reject(new Error('URL Web App belum diatur pada variabel API_URL di file HTML.')); return; }
+        const callbackName = 'tabunganCallback_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+        const params = new URLSearchParams({ action, callback: callbackName });
+        if (includeToken && state.token) params.set('token', state.token);
+        if (data && Object.keys(data).length) params.set('data', JSON.stringify(data));
+        const script = document.createElement('script');
+        let completed = false;
+        const finish = (fn, value) => {
+          if (completed) return;
+          completed = true;
+          clearTimeout(timer);
+          delete window[callbackName];
+          if (script.parentNode) script.parentNode.removeChild(script);
+          fn(value);
+        };
+        window[callbackName] = result => {
+          if (result && result.ok) finish(resolve, result);
+          else {
+            const error = new Error((result && result.message) || 'Permintaan tidak berhasil.');
+            error.code = result && result.code;
+            finish(reject, error);
+          }
+        };
+        script.onerror = () => finish(reject, new Error('Tidak dapat menghubungi Google Sheets. Periksa URL Web App dan koneksi internet.'));
+        const timer = setTimeout(() => finish(reject, new Error('Server tidak merespons. Periksa koneksi lalu coba lagi.')), 20000);
+        script.src = API_URL + (API_URL.includes('?') ? '&' : '?') + params.toString();
+        document.head.appendChild(script);
+      });
+    }
+
+    function showLogin(message = '') {
+      $('#loginScreen').classList.remove('hidden'); $('#appScreen').classList.add('hidden'); $('#logoutBtn').classList.add('hidden'); $('#refreshBtn').classList.add('hidden');
+      $('#loginError').textContent = message; $('#loginError').classList.toggle('error', !!message); $('#loginError').style.display = message ? 'block' : 'none';
+    }
+    function showApp() {
+      $('#loginScreen').classList.add('hidden'); $('#appScreen').classList.remove('hidden'); $('#logoutBtn').classList.remove('hidden'); $('#refreshBtn').classList.remove('hidden');
+    }
+    async function loadData() {
+      const data = await apiRequest('getData');
+      state.students = Array.isArray(data.students) ? data.students : [];
+      state.transactions = Array.isArray(data.transactions) ? data.transactions : [];
+      renderAll();
+      $('#lastUpdated').textContent = 'Diperbarui ' + new Date().toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
+    }
+    function handleSessionError(error) {
+      if (error && (error.message.toLowerCase().includes('sesi') || error.code === 'AUTH_REQUIRED')) {
+        sessionStorage.removeItem('tabunganToken'); state.token = ''; showLogin('Sesi telah berakhir. Silakan masukkan PIN kembali.'); return true;
+      }
+      return false;
+    }
+
+    $('#loginForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const button = $('#loginBtn'); const pin = $('#pinInput').value.trim();
+      button.disabled = true; button.innerHTML = '<span class="loader"></span> Memeriksa PIN…';
+      $('#loginError').style.display = 'none';
+      try {
+        const result = await apiRequest('login', { pin }, false);
+        state.token = result.token; sessionStorage.setItem('tabunganToken', result.token);
+        await loadData(); showApp(); setPage('dashboard'); $('#pinInput').value = '';
+      } catch (error) {
+        $('#loginError').textContent = error.message; $('#loginError').style.display = 'block';
+      } finally { button.disabled = false; button.innerHTML = '<i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk'; }
+    });
+
+    $('#refreshBtn').addEventListener('click', async () => {
+      const icon = $('#refreshBtn').querySelector('i'); icon.classList.add('fa-spin');
+      try { await loadData(); } catch (error) { if (!handleSessionError(error)) alert(error.message); }
+      finally { icon.classList.remove('fa-spin'); }
+    });
+
+    $('#logoutBtn').addEventListener('click', async () => {
+      try { await apiRequest('logout'); } catch (_) {}
+      state.token = ''; sessionStorage.removeItem('tabunganToken'); showLogin();
+    });
+
+    function setPage(page) {
+      state.page = page;
+      $$('.page').forEach(el => el.classList.toggle('hidden', el.id !== 'page-' + page));
+      $$('.nav-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.page === page));
+      if (page === 'history') renderHistory();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    $$('.nav-btn').forEach(btn => btn.addEventListener('click', () => setPage(btn.dataset.page)));
+    document.addEventListener('click', event => {
+      const goto = event.target.closest('[data-goto]');
+      if (goto) setPage(goto.dataset.goto);
+    });
+
+    function renderAll() {
+      const summary = calculateSummary();
+      $('#totalBalance').textContent = rupiah(summary.totalBalance);
+      $('#totalIn').textContent = rupiah(summary.totalIn);
+      $('#totalOut').textContent = rupiah(summary.totalOut);
+      $('#totalStudents').textContent = state.students.length;
+      $('#studentCountLabel').textContent = state.students.length + ' siswa';
+      $('#studentsPageCount').textContent = state.students.length + ' siswa';
+      populateStudentSelects();
+      renderStudentBalances(summary);
+      renderRecent();
+      renderHistory();
+    }
+
+    function populateStudentSelects() {
+      const options = state.students.map(student => `<option value="${escapeHTML(student.id)}">${escapeHTML(student.name)}</option>`).join('');
+      const current = $('#studentInput').value;
+      $('#studentInput').innerHTML = '<option value="">Pilih nama siswa</option>' + options;
+      if (state.students.some(student => student.id === current)) $('#studentInput').value = current;
+      const filterCurrent = $('#filterStudent').value;
+      $('#filterStudent').innerHTML = '<option value="">Semua siswa</option>' + options;
+      if (state.students.some(student => student.id === filterCurrent)) $('#filterStudent').value = filterCurrent;
+    }
+
+    function renderStudentBalances(summary = calculateSummary()) {
+      const sorted = [...state.students].sort((a,b) => (summary.balances[b.id] || 0) - (summary.balances[a.id] || 0));
+      if (!sorted.length) {
+        $('#dashboardStudents').innerHTML = '<div class="empty-state"><i class="fa-solid fa-users"></i>Belum ada data siswa.</div>';
+        $('#allStudents').innerHTML = '<div class="panel empty-state">Belum ada data siswa.</div>'; return;
+      }
+      $('#dashboardStudents').innerHTML = sorted.map(student => `
+        <div class="student-row"><div class="avatar">${escapeHTML(initials(student.name))}</div><div class="student-info"><b>${escapeHTML(student.name)}</b><span>${summary.totals[student.id]?.masuk ? 'Setoran: ' + rupiah(summary.totals[student.id].masuk) : 'Belum ada setoran'}</span></div><div class="student-balance"><b>${rupiah(summary.balances[student.id] || 0)}</b><span>Saldo saat ini</span></div></div>`).join('');
+      $('#allStudents').innerHTML = sorted.map(student => {
+        const t = summary.totals[student.id] || { masuk:0, keluar:0 };
+        return `<div class="panel" style="padding:14px 16px"><div class="student-row" style="padding:0;border:0"><div class="avatar">${escapeHTML(initials(student.name))}</div><div class="student-info"><b>${escapeHTML(student.name)}</b><span>${(state.transactions.filter(tx => tx.studentId === student.id).length)} transaksi tercatat</span></div><div class="student-balance"><b>${rupiah(summary.balances[student.id] || 0)}</b><span>Saldo tabungan</span></div></div><div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0 48px;font-size:10px"><span class="amount-positive"><i class="fa-solid fa-arrow-down"></i> Masuk: ${rupiah(t.masuk)}</span><span class="amount-negative"><i class="fa-solid fa-arrow-up"></i> Keluar: ${rupiah(t.keluar)}</span></div></div>`;
+      }).join('');
+    }
+
+    function transactionIcon(type) {
+      return type === 'MASUK' ? '<i class="fa-solid fa-arrow-down"></i>' : '<i class="fa-solid fa-arrow-up"></i>';
+    }
+    function renderRecent() {
+      const recent = state.transactions.slice(0,5);
+      if (!recent.length) { $('#recentTransactions').innerHTML = '<div class="empty-state"><i class="fa-solid fa-receipt"></i>Belum ada transaksi yang dicatat.</div>'; return; }
+      $('#recentTransactions').innerHTML = recent.map(tx => `<div class="recent-item"><div class="tx-icon ${tx.type === 'MASUK' ? 'in' : 'out'}">${transactionIcon(tx.type)}</div><div class="tx-info"><b>${escapeHTML(tx.studentName)}</b><span>${formatDate(tx.date)} · ${tx.type === 'MASUK' ? 'Uang masuk' : 'Uang keluar'}</span></div><div class="tx-amount ${tx.type === 'MASUK' ? 'amount-positive' : 'amount-negative'}">${tx.type === 'MASUK' ? '+' : '−'}${rupiah(tx.amount)}</div></div>`).join('');
+    }
+
+    function renderHistory() {
+      const query = ($('#searchHistory')?.value || '').trim().toLowerCase();
+      const studentId = $('#filterStudent')?.value || '';
+      const type = $('#filterType')?.value || '';
+      const filtered = state.transactions.filter(tx => {
+        const matchesQuery = !query || (tx.studentName + ' ' + tx.note).toLowerCase().includes(query);
+        return matchesQuery && (!studentId || tx.studentId === studentId) && (!type || tx.type === type);
+      });
+      $('#historyCount').textContent = filtered.length + ' transaksi';
+      if (!filtered.length) { $('#historyList').innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i>Tidak ada transaksi yang cocok dengan filter.</div>'; return; }
+      $('#historyList').innerHTML = filtered.map(tx => `
+        <article class="history-card"><div class="tx-icon ${tx.type === 'MASUK' ? 'in' : 'out'}">${transactionIcon(tx.type)}</div><div class="history-main"><b>${escapeHTML(tx.studentName)}</b><span>${formatDate(tx.date)}${tx.note ? ' · ' + escapeHTML(tx.note) : ''}</span><span class="pill ${tx.type === 'MASUK' ? 'in' : 'out'}">${tx.type === 'MASUK' ? 'UANG MASUK' : 'UANG KELUAR'}</span></div><div class="history-side"><b class="${tx.type === 'MASUK' ? 'amount-positive' : 'amount-negative'}">${tx.type === 'MASUK' ? '+' : '−'}${rupiah(tx.amount)}</b><small>Rupiah</small></div><button class="edit-btn" type="button" data-edit="${escapeHTML(tx.id)}" title="Edit transaksi" aria-label="Edit transaksi"><i class="fa-solid fa-pen"></i></button></article>`).join('');
+    }
+    $('#searchHistory').addEventListener('input', renderHistory);
+    $('#filterStudent').addEventListener('change', renderHistory);
+    $('#filterType').addEventListener('change', renderHistory);
+
+    function setTransactionType(type) {
+      state.type = type;
+      $$('.type-btn').forEach(btn => {
+        const active = btn.dataset.type === type;
+        btn.classList.toggle('active', active);
+        btn.classList.toggle('in', active && type === 'MASUK');
+        btn.classList.toggle('out', active && type === 'KELUAR');
+      });
+    }
+    $$('.type-btn').forEach(btn => btn.addEventListener('click', () => setTransactionType(btn.dataset.type)));
+
+    function resetTransactionForm() {
+      state.editId = null;
+      $('#transactionForm').reset();
+      $('#dateInput').value = localDateString();
+      $('#formTitle').textContent = 'Input Transaksi';
+      $('#saveTransactionBtn').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Simpan Transaksi';
+      $('#cancelEditBtn').classList.add('hidden');
+      $('#formMessage').className = 'form-message'; $('#formMessage').textContent = '';
+      setTransactionType('MASUK');
+    }
+    function showFormMessage(message, type = 'error') {
+      $('#formMessage').textContent = message;
+      $('#formMessage').className = 'form-message ' + type;
+    }
+    function beginEdit(id) {
+      const tx = state.transactions.find(item => item.id === id);
+      if (!tx) { alert('Transaksi tidak ditemukan. Muat ulang data terlebih dahulu.'); return; }
+      state.editId = tx.id;
+      $('#formTitle').textContent = 'Edit Transaksi';
+      $('#studentInput').value = tx.studentId;
+      $('#dateInput').value = tx.date;
+      $('#amountInput').value = tx.amount;
+      $('#noteInput').value = tx.note || '';
+      setTransactionType(tx.type);
+      $('#saveTransactionBtn').innerHTML = '<i class="fa-solid fa-check"></i> Simpan Perubahan';
+      $('#cancelEditBtn').classList.remove('hidden');
+      $('#formMessage').className = 'form-message'; $('#formMessage').textContent = '';
+      setPage('input');
+    }
+    $('#historyList').addEventListener('click', event => {
+      const button = event.target.closest('[data-edit]');
+      if (button) beginEdit(button.dataset.edit);
+    });
+    $('#cancelEditBtn').addEventListener('click', resetTransactionForm);
+
+    $('#transactionForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      const studentId = $('#studentInput').value;
+      const date = $('#dateInput').value;
+      const amount = Number($('#amountInput').value);
+      const note = $('#noteInput').value.trim();
+      if (!studentId) { showFormMessage('Pilih nama siswa terlebih dahulu.'); return; }
+      if (!date) { showFormMessage('Tanggal transaksi wajib diisi.'); return; }
+      if (!Number.isSafeInteger(amount) || amount <= 0) { showFormMessage('Jumlah uang harus berupa angka bulat lebih dari 0.'); return; }
+
+      const button = $('#saveTransactionBtn');
+      button.disabled = true; button.innerHTML = '<span class="loader"></span> Menyimpan…';
+      try {
+        const payload = { id: state.editId || '', studentId, date, type: state.type, amount, note };
+        const result = await apiRequest('saveTransaction', payload);
+        await loadData();
+        resetTransactionForm();
+        showFormMessage(result.message || 'Transaksi berhasil disimpan.', 'success');
+        setPage('input');
+      } catch (error) {
+        if (handleSessionError(error)) return;
+        showFormMessage(error.message || 'Transaksi gagal disimpan.');
+      } finally {
+        button.disabled = false;
+        if (state.editId) button.innerHTML = '<i class="fa-solid fa-check"></i> Simpan Perubahan';
+        else button.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Simpan Transaksi';
+      }
+    });
+
+    async function startApp() {
+      $('#dateInput').value = localDateString();
+      const savedToken = sessionStorage.getItem('tabunganToken');
+      if (!savedToken) { showLogin(); return; }
+      state.token = savedToken;
+      try { await loadData(); showApp(); setPage('dashboard'); }
+      catch (error) { state.token = ''; sessionStorage.removeItem('tabunganToken'); showLogin(error.message); }
+    }
+    startApp();
+  </script>
+</body>
+</html>
